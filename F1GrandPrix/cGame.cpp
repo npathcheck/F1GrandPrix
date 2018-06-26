@@ -33,7 +33,7 @@ void cGame::Init()
 
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
-	gothicLoader.Init("williams.3DS", 0);
+	gothicLoader.Init("2010071618525595310.3DS", 0);
 
 	InitLight();
 }

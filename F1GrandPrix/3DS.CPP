@@ -140,7 +140,7 @@ void CLoad3DS::CleanUp()
 //  下面的函数读出3ds文件的主要部分
 void CLoad3DS::ReadNextChunk(t3DModel *pModel, tChunk *pPreChunk)
 {	t3DObject newObject = {0};					// 用来添加到对象链表
-	tMatInfo newTexture = {0};				// 用来添加到材质链表
+	tMatInfo newTexture = {0};					// 用来添加到材质链表
 	unsigned int version = 0;					// 保存文件版本
 	int buffer[50000] = {0};					// 用来跳过不需要的数据
 	m_CurrentChunk = new tChunk;				// 为新的块分配空间		
@@ -400,7 +400,7 @@ void CLoad3DS::ReadObjMat(t3DModel *pModel, t3DObject *pObject, tChunk *pPreChun
 	}
 	pPreChunk->bytesRead += fread(buffer, 1, pPreChunk->length - pPreChunk->bytesRead, m_FilePointer);
 }			
-//  下面的这些函数主要用来计算顶点的法向量，顶点的法向量主要用来计算光照
+// 下面的这些函数主要用来计算顶点的法向量，顶点的法向量主要用来计算光照
 // 下面的宏定义计算一个矢量的长度
 #define Mag(Normal) (sqrt(Normal.x*Normal.x + Normal.y*Normal.y + Normal.z*Normal.z))
 // 下面的函数求两点决定的矢量
