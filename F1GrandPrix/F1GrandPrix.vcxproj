@@ -114,10 +114,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="3DS.H" />
     <ClInclude Include="cGame.h" />
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="3DS.CPP" />
     <ClCompile Include="cGame.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>

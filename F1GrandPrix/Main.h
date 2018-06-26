@@ -12,10 +12,7 @@
 #include <crtdbg.h>
 #include <vector>
 #include <stdio.h>
-
-
-//// ------------------- 模型文件
-#define fileName "williams.3ds"
+#include <math.h>
 
 //// ------------------- 窗口参数
 #define winWidth 800
