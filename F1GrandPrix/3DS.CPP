@@ -72,12 +72,11 @@ void CLoad3DS::show3ds(int j0,float tx,float ty,float tz,float size) //显示3ds模
 	for(int i = 0; i < g_3DModel[j0].numOfObjects; i++)
 	{if(g_3DModel[j0].pObject.size() <= 0) break;// 如果对象的大小小于0，则退出
 	 t3DObject *pObject = &g_3DModel[j0].pObject[i];// 获得当前显示的对象
-//if(pObject->bHasTexture)// 判断该对象是否有纹理映射
-		// {	
-			 glEnable(GL_TEXTURE_2D);// 打开纹理映射
+	 if(pObject->bHasTexture)// 判断该对象是否有纹理映射
+		 {	glEnable(GL_TEXTURE_2D);// 打开纹理映射
 			glBindTexture(GL_TEXTURE_2D, g_Texture[j0][pObject->materialID]);
-		// } 
-	// else	glDisable(GL_TEXTURE_2D);// 关闭纹理映射
+		 } 
+	 else	glDisable(GL_TEXTURE_2D);// 关闭纹理映射
 	 
 	 glColor3ub(255, 255, 255);
 
