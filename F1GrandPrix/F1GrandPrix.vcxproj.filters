@@ -18,18 +18,12 @@
     <ClInclude Include="Main.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="cLoad3DS.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="cGame.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="cLoad3DS.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="cGame.cpp">

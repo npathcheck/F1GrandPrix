@@ -115,12 +115,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="cGame.h" />
-    <ClInclude Include="cLoad3DS.h" />
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cGame.cpp" />
-    <ClCompile Include="cLoad3DS.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
