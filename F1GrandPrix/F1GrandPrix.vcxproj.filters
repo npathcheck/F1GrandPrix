@@ -18,10 +18,10 @@
     <ClInclude Include="Main.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="cGame.h">
+    <ClInclude Include="3DS.H">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="3DS.H">
+    <ClInclude Include="cGame.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,10 +29,10 @@
     <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="cGame.cpp">
+    <ClCompile Include="3DS.CPP">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="3DS.CPP">
+    <ClCompile Include="cGame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

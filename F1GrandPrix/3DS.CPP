@@ -2,7 +2,7 @@
 #include "3ds.h"
 					
 UINT g_Texture[MAX_MODEL][MAX_TEXTURES] = {0};
-t3DModel g_3DModel[MAX_MODEL];	 //
+t3DModel g_3DModel[MAX_MODEL];	
 								
 int   g_ViewMode	  = GL_TRIANGLES;
 bool  g_bLighting     = true;		
@@ -14,7 +14,7 @@ CLoad3DS::CLoad3DS()//  构造函数的功能是初始化tChunk数据
 CLoad3DS::~CLoad3DS()
 {	CleanUp();// 释放内存空间
 	for(int j = 0; j <10;j++)
-	for(int i = 0; i < g_3DModel[j].numOfObjects; i++)// g_3DMode全局变量，表示模型
+	for(int i = 0; i < g_3DModel[j].numOfObjects; i++)
 	{	delete [] g_3DModel[j].pObject[i].pFaces;// 删除所有的变量
 		delete [] g_3DModel[j].pObject[i].pNormals;
 		delete [] g_3DModel[j].pObject[i].pVerts;
@@ -22,24 +22,17 @@ CLoad3DS::~CLoad3DS()
 	}
 }
 ////////////////////////////////////////////////////////////////////////
-void CLoad3DS::Init(char *filename,int j)//只有一个模型！
+void CLoad3DS::Init(char *filename,int j)//
 {	Import3DS(&g_3DModel[j], filename);			// 将3ds文件装入到模型结构体中
-	printf("g_3DModel[%d].numOfMaterials个数%d\n", j, g_3DModel[j].numOfMaterials);
 	for(int i =0; i<g_3DModel[j].numOfMaterials;i++)
-	{
-		if (strlen(g_3DModel[j].pMaterials[i].strFile)>0)// 判断是否是一个文件名
-		{
-			printf("bmp文件名：%s\n", g_3DModel[j].pMaterials[i].strFile);
-			CreateTexture(g_Texture[j], g_3DModel[j].pMaterials[i].strFile, i);//使用纹理文件名称来装入位图	
-		}
+	{if(strlen(g_3DModel[j].pMaterials[i].strFile)>0)// 判断是否是一个文件名
+		CreateTexture(g_Texture[j], g_3DModel[j].pMaterials[i].strFile, i);//使用纹理文件名称来装入位图			
 	 g_3DModel[j].pMaterials[i].texureId = i;// 设置材质的纹理ID
 	}
 }
 //  从文件中创建纹理
 void CLoad3DS::CreateTexture(UINT textureArray[], LPSTR strFileName, int textureID)
-{	
-	printf("%s : %d\n", strFileName, textureID);
-	AUX_RGBImageRec *pBitmap = NULL;
+{	AUX_RGBImageRec *pBitmap = NULL;
 	if(!strFileName) return;							// 如果无此文件，则直接返回
 	int strFileNameLen = strlen(strFileName);
 	strFileName[strFileNameLen - 3] = 'b';
