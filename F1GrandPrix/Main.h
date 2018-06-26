@@ -23,8 +23,9 @@
 #define  GLUT_WHEEL_UP 3           
 #define  GLUT_WHEEL_DOWN 4
 
-//// ------------------- 定义纹理 
+//// ------------------- 定义模型参数
 #define MAX_TEXTURES 100
+#define MAX_MODEL 10
 
 
 #endif

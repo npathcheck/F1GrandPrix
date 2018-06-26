@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - winWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - winHeight) / 2);
 
 	// 设置窗口的标题
-	glutCreateWindow("F1方程式");
+	glutCreateWindow("OpenGL");
 
 	// 自定义初始化
 	Init();

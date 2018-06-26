@@ -1,8 +1,8 @@
 
 #include "3ds.h"
 					
-UINT g_Texture[10][MAX_TEXTURES] = {0};	
-t3DModel g_3DModel[10];	
+UINT g_Texture[MAX_MODEL][MAX_TEXTURES] = {0};
+t3DModel g_3DModel[MAX_MODEL];	
 								
 int   g_ViewMode	  = GL_TRIANGLES;
 bool  g_bLighting     = true;		
@@ -34,6 +34,10 @@ void CLoad3DS::Init(char *filename,int j)//
 void CLoad3DS::CreateTexture(UINT textureArray[], LPSTR strFileName, int textureID)
 {	AUX_RGBImageRec *pBitmap = NULL;
 	if(!strFileName) return;							// 如果无此文件，则直接返回
+	int strFileNameLen = strlen(strFileName);
+	strFileName[strFileNameLen - 3] = 'b';
+	strFileName[strFileNameLen - 2] = 'm';
+	strFileName[strFileNameLen - 1] = 'p';
 	pBitmap = auxDIBImageLoad(strFileName);				// 装入位图，并保存数据
 	if(pBitmap == NULL)		exit(0);					// 如果装入位图失败，则退出
 	// 生成纹理
@@ -54,8 +58,8 @@ void CLoad3DS::show3ds(int j0,float tx,float ty,float tz,float size) //显示3ds模
 	glPushAttrib(GL_CURRENT_BIT);//保存现有颜色属实性
 	glPushMatrix();
 	glDisable(GL_TEXTURE_2D);
-	::glTranslatef( tx, ty, tz);
-	::glScaled(size,size,size);
+	glTranslatef( tx, ty, tz);
+	glScaled(size,size,size);
 	glRotatef(90, 0, 1.0f, 0);
 	// 遍历模型中所有的对象
 	for(int i = 0; i < g_3DModel[j0].numOfObjects; i++)
@@ -66,7 +70,7 @@ void CLoad3DS::show3ds(int j0,float tx,float ty,float tz,float size) //显示3ds模
 			glBindTexture(GL_TEXTURE_2D, g_Texture[j0][pObject->materialID]);
 		 } 
 	 else	glDisable(GL_TEXTURE_2D);// 关闭纹理映射
-//这里原来有错，不行正确调用模型的贴图，g_Texture应该为2维数组	 
+	 
 	 glColor3ub(255, 255, 255);
 
 	 glBegin(g_ViewMode);//开始以g_ViewMode模式绘制					
@@ -472,7 +476,7 @@ void CLoad3DS::ComputeNormals(t3DModel *pModel)
 		CVector3 vZero = vSum;
 		int shared=0;
 		// 遍历所有的顶点
-		for (i = 0; i < pObject->numOfVerts; i++)			
+		for (int i = 0; i < pObject->numOfVerts; i++)			
 		{	for (int j = 0; j < pObject->numOfFaces; j++)	// 遍历所有的三角形面
 			{												// 判断该点是否与其它的面共享
 				if (pObject->pFaces[j].vertIndex[0] == i || 
